@@ -1,47 +1,51 @@
 class ChangeGenerator
 
-  def initialize 
-    @notes = [50, 20, 10, 5]
+  def initialize
+    @total = 0
+    @conversion = []
   end
 
   def convert(change)
-    @total = change
-    @conversion = []
-    fifty(change)
-    twenty(change)
-    # @notes.each do |note| 
-    #   if note % change == 0
-    #     return conversion << "£#{change.round(0).to_s}"
-    #   else 
-    #     conversion << "£#{note.round(0).to_s}" * (change / note)
-        # total -= note
-        # conversion << "£#{note.to_s}"
-        # p total 
-    #   end
-    # end
+    @total += change
+    fifty if @total != 0
+    twenty if @total != 0  
+    ten if @total != 0  
+    five if @total != 0
     @conversion.flatten
   end
 
   private
 
-  def fifty(change)
-    change = @total
+  def fifty
     if @total >= 50
-      fifties = @total / 50 
+      fifties = (@total / 50).floor
+      p fifties
       @conversion << ["£50"] * fifties
-      @total -= 50 * fifties
+      @total -= (50 * fifties)
     end
   end
   
-  def twenty(change)
-    change = @total
+  def twenty
     if @total >= 20
-      twenties = @total / 20 
+      twenties = (@total / 20).floor
       @conversion << ["£20"] * twenties
-      @total -= 20 * twenties
+      @total -= (20 * twenties)
     end
   end
-      
 
+  def ten
+    if @total >= 10
+      tens = (@total / 10).floor
+      @conversion << ["£10"] * tens
+      @total -= 10 * tens
+    end
+  end
 
+  def five
+    if @total >= 5
+      fives = (@total / 5).floor
+      @conversion << ["£5"] * fives
+      @total -= 10 * fives
+    end
+  end
 end
