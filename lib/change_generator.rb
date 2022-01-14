@@ -11,6 +11,7 @@ class ChangeGenerator
     twenty if @total != 0  
     ten if @total != 0  
     five if @total != 0
+    fifty_pence if @total != 0
     @conversion.flatten
   end
 
@@ -19,7 +20,6 @@ class ChangeGenerator
   def fifty
     if @total >= 50
       fifties = (@total / 50).floor
-      p fifties
       @conversion << ["£50"] * fifties
       @total -= (50 * fifties)
     end
@@ -46,6 +46,14 @@ class ChangeGenerator
       fives = (@total / 5).floor
       @conversion << ["£5"] * fives
       @total -= 10 * fives
+    end
+  end
+
+  def fifty_pence
+    if @total >= 0.5
+      fiftypences = (@total / 0.5).floor
+      @conversion << ["50p"] * fiftypences
+      @total -= 0.5 * fiftypences
     end
   end
 end
