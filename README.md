@@ -20,3 +20,4 @@ change_generator.convert(76.81)
 INPUT | OUTPUT 
 ------|--------
 change_generator.convert(50.00) | ["£50"]
+change_generator.convert(40) | ["£20", "£20"]
