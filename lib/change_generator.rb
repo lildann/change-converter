@@ -23,29 +23,33 @@ class ChangeGenerator
 
   private
 
-  def fifty
-    fifties = (@total / 50).floor
-    @conversion << ["£50"] * fifties
-    @total -= (50 * fifties)
+  def calculate_how_many(value)
+    (@total / value).floor
+  end
+
+  def fifty(value=50)
+    number_of_fifties = calculate_how_many(value)
+    @conversion << ["£50"] * number_of_fifties
+    @total -= (50 * number_of_fifties)
   end
   
-  def twenty
-    twenties = (@total / 20).floor
-    @conversion << ["£20"] * twenties
-    @total -= (20 * twenties)
+  def twenty(value=20)
+    number_of_twenties = calculate_how_many(value)
+    @conversion << ["£20"] * number_of_twenties
+    @total -= (20 * number_of_twenties)
 
   end
 
-  def ten
-    tens = (@total / 10).floor
-    @conversion << ["£10"] * tens
-    @total -= 10 * tens
+  def ten(value=10)
+    number_of_tens = calculate_how_many(value)
+    @conversion << ["£10"] * number_of_tens
+    @total -= 10 * number_of_tens
   end
 
-  def five
-    fives = (@total / 5).floor
-    @conversion << ["£5"] * fives
-    @total -= 5 * fives
+  def five(value=5)
+    number_of_fives = calculate_how_many(value)
+    @conversion << ["£5"] * number_of_fives
+    @total -= 5 * number_of_fives
   end
 
   def one_pound
@@ -53,39 +57,39 @@ class ChangeGenerator
     @total -= 1 * @total.floor
   end
 
-  def fifty_pence
-    fifty_pences = (@total / 0.5).floor
-    @conversion << ["50p"] * fifty_pences
-    @total -= 0.5 * fifty_pences
+  def fifty_pence(value=0.5)
+    number_of_fifty_pence = calculate_how_many(value)
+    @conversion << ["50p"] * number_of_fifty_pence
+    @total -= 0.5 * number_of_fifty_pence
   end
 
-  def twenty_pence
-    twenty_pences = (@total / 0.2).floor
-    @conversion << ["20p"] * twenty_pences
-    @total -= 0.2 * twenty_pences
+  def twenty_pence(value=0.2)
+    number_of_twenty_pence = calculate_how_many(value)
+    @conversion << ["20p"] * number_of_twenty_pence
+    @total -= 0.2 * number_of_twenty_pence
   end
 
-  def ten_pence
-    ten_pences = (@total / 0.1).floor
-    @conversion << ["10p"] * ten_pences
-    @total -= 0.1 * ten_pences
+  def ten_pence(value=0.1)
+    number_of_ten_pence = calculate_how_many(value)
+    @conversion << ["10p"] * number_of_ten_pence
+    @total -= 0.1 * number_of_ten_pence
   end
 
-  def five_pence
-    five_pences = (@total / 0.05).floor
-    @conversion << ["5p"] * five_pences
-    @total -= 0.05 * five_pences
+  def five_pence(value=0.05)
+    number_of_five_pence = calculate_how_many(value)
+    @conversion << ["5p"] * number_of_five_pence
+    @total -= 0.05 * number_of_five_pence
   end
 
-  def two_pence
-      two_pences = (@total / 0.02).floor
-      @conversion << ["2p"] * two_pences
-      @total -= 0.02 * two_pences
+  def two_pence(value=0.02)
+    number_of_two_pence = calculate_how_many(value)
+    @conversion << ["2p"] * number_of_two_pence
+    @total -= 0.02 * number_of_two_pence
   end
 
-  def one_pence
-    one_pences = (@total / 0.01).floor
-    @conversion << ["1p"] * one_pences
-    @total -= 0.05 * one_pences
+  def one_pence(value=0.01)
+    number_of_one_pence = calculate_how_many(value)
+    @conversion << ["1p"] * number_of_one_pence
+    @total -= 0.01 * number_of_one_pence
   end
 end
